@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     },
     methods: {
-
+      toggleBio: function(inputPerson) {
+        inputPerson.bioVisible = !inputPerson.bioVisible;
+      }
     },
     computed: {
 
