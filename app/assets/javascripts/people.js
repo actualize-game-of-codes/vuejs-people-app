@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
           bio: "Excepteur shabby chic semiotics Marfa, quinoa try-hard polaroid pariatur banh mi selfies incididunt brunch trust fund. Ethical dolor PBR&B Tumblr.",
           bioVisible: false
         }
-      ]
+      ],
+      newPersonName: "",
+      newPersonBio: ""
     },
     mounted: function() {
 
@@ -34,6 +36,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       toggleBio: function(inputPerson) {
         inputPerson.bioVisible = !inputPerson.bioVisible;
+      },
+      addPerson: function() {
+        var newPerson = {
+          name: this.newPersonName,
+          bio: this.newPersonBio,
+          bioVisible: false
+        };
+        this.people.push(newPerson);
       }
     },
     computed: {
