@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         this.people.push(newPerson);
         this.newPersonName = "";
         this.newPersonBio = "";
+      },
+      deletePerson: function(inputPerson) {
+        var index = this.people.indexOf(inputPerson);
+        this.people.splice(index, 1);
       }
     },
     computed: {
