@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           bioVisible: false
         };
         this.people.push(newPerson);
+        this.newPersonName = "";
+        this.newPersonBio = "";
       }
     },
     computed: {
