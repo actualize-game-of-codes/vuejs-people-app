@@ -23,14 +23,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
         inputPerson.bioVisible = !inputPerson.bioVisible;
       },
       addPerson: function() {
-        var newPerson = {
-          name: this.newPersonName,
-          bio: this.newPersonBio,
-          bioVisible: false
-        };
-        this.people.push(newPerson);
-        this.newPersonName = "";
-        this.newPersonBio = "";
+        Rails.ajax({
+          url: "/api/v1/people",
+          type: "POST",
+          // data: "form_name=" + this.newPersonName + "&form_bio=" + this.newPersonBio,
+          data: `form_name=${this.newPersonName}&form_bio=${this.newPersonBio}`,
+          success: function(data) {
+            console.log('success!!!', data);
+            this.people.push(data);
+            this.newPersonName = "";
+            this.newPersonBio = "";
+          }.bind(this)
+        });
       },
       deletePerson: function(inputPerson) {
         var index = this.people.indexOf(inputPerson);
