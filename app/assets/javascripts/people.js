@@ -1,5 +1,4 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+/* global Vue, Rails */
 document.addEventListener("DOMContentLoaded", function(event) { 
   var app = new Vue({
     el: '#app',
