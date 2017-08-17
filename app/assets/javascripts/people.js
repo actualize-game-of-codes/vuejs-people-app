@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       message: 'Hello Vue!',
       people: [],
       newPersonName: "",
-      newPersonBio: ""
+      newPersonBio: "",
+      nameFilter: ""
     },
     mounted: function() {
       Rails.ajax({
@@ -39,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       deletePerson: function(inputPerson) {
         var index = this.people.indexOf(inputPerson);
         this.people.splice(index, 1);
+      },
+      isValidPerson: function(inputPerson) {
+        return inputPerson.name.indexOf(this.nameFilter) !== -1;
       }
     },
     computed: {

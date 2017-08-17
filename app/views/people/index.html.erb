@@ -10,7 +10,8 @@
     </div>
     <button v-on:click="addPerson()">Create person!</button>
   </div>
-  <div v-for="person in people">
+  Search by name: <input type="text" v-model="nameFilter">
+  <div v-for="person in people" v-if="isValidPerson(person)">
     <h2>{{ person.name }}</h2>
     <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>
     <button v-on:click="toggleBio(person)">Toggle strikethrough</button>
