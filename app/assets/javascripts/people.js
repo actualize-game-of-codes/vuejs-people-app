@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       people: [],
       newPersonName: "",
       newPersonBio: "",
-      nameFilter: ""
+      nameFilter: "",
+      bioFilter: ""
     },
     mounted: function() {
       Rails.ajax({
@@ -42,7 +43,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         this.people.splice(index, 1);
       },
       isValidPerson: function(inputPerson) {
-        return inputPerson.name.indexOf(this.nameFilter) !== -1;
+        var validName = inputPerson.name.toLowerCase().indexOf(this.nameFilter.toLowerCase()) !== -1;
+        var validBio = inputPerson.bio.toLowerCase().indexOf(this.bioFilter.toLowerCase()) !== -1;
+        return validName && validBio;
       }
     },
     computed: {

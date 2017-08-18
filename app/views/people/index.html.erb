@@ -11,6 +11,7 @@
     <button v-on:click="addPerson()">Create person!</button>
   </div>
   Search by name: <input type="text" v-model="nameFilter">
+  Search by bio: <input type="text" v-model="bioFilter">
   <div v-for="person in people" v-if="isValidPerson(person)">
     <h2>{{ person.name }}</h2>
     <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>
