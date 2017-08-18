@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       people: [],
       newPersonName: "",
       newPersonBio: "",
-      attributeFilter: ""
+      attributeFilter: "",
+      sortAttribute: "id"
     },
     mounted: function() {
       Rails.ajax({
@@ -48,7 +49,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     },
     computed: {
-
+      modifiedPeople: function() {
+        return this.people.sort(function(person1, person2) {
+          return person1[this.sortAttribute].toString().localeCompare(person2[this.sortAttribute].toString());
+        }.bind(this));
+      }
     }
   });
 });

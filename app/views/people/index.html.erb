@@ -14,9 +14,13 @@
   <datalist id="names">
     <option v-for="person in people">{{ person.name }}</option>
   </datalist>
-  <transition-group name="slide-right">
-    <div v-for="person in people" v-bind:key="person.id" v-if="isValidPerson(person)">
-      <h2>{{ person.name }}</h2>
+  <div>
+    <button v-on:click="sortAttribute = 'name'">Sort by name</button>
+    <button v-on:click="sortAttribute = 'bio'">Sort by bio</button>
+  </div>
+  <transition-group name="fade">
+    <div v-for="person in modifiedPeople" v-bind:key="person.id" v-if="isValidPerson(person)">
+      <h2>{{ person.id }} - {{ person.name }}</h2>
       <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>
       <button v-on:click="toggleBio(person)">Toggle strikethrough</button>
       <button v-on:click="deletePerson(person)">Delete</button>
