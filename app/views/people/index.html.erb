@@ -10,7 +10,10 @@
     </div>
     <button v-on:click="addPerson()">Create person!</button>
   </div>
-  Search any attribute: <input type="text" v-model="attributeFilter">
+  Search any attribute: <input type="text" v-model="attributeFilter" list="names">
+  <datalist id="names">
+    <option v-for="person in people">{{ person.name }}</option>
+  </datalist>
   <div v-for="person in people" v-if="isValidPerson(person)">
     <h2>{{ person.name }}</h2>
     <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>
