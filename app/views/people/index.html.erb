@@ -14,10 +14,12 @@
   <datalist id="names">
     <option v-for="person in people">{{ person.name }}</option>
   </datalist>
-  <div v-for="person in people" v-if="isValidPerson(person)">
-    <h2>{{ person.name }}</h2>
-    <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>
-    <button v-on:click="toggleBio(person)">Toggle strikethrough</button>
-    <button v-on:click="deletePerson(person)">Delete</button>
-  </div>
+  <transition-group name="slide-right">
+    <div v-for="person in people" v-bind:key="person.id" v-if="isValidPerson(person)">
+      <h2>{{ person.name }}</h2>
+      <p v-bind:class="{strike: person.bioVisible}">{{ person.bio }}</p>
+      <button v-on:click="toggleBio(person)">Toggle strikethrough</button>
+      <button v-on:click="deletePerson(person)">Delete</button>
+    </div>
+  </transition-group>
 </div>
